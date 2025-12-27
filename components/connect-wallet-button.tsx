@@ -89,45 +89,54 @@ export function ConnectWalletButton() {
                     <span className="hidden sm:inline">Connect</span>
                 </Button>
             </DialogTrigger>
-            <DialogContent className="sm:max-w-md">
-                <DialogHeader>
-                    <DialogTitle>Connect Wallet</DialogTitle>
-                    <DialogDescription>
-                        Choose how you want to connect to Stacks Lab
+            <DialogContent className="sm:max-w-md border border-primary/40 bg-background/90 backdrop-blur-lg shadow-[0_12px_40px_rgba(0,0,0,0.35)]">
+                <div className="absolute inset-0 pointer-events-none retro-grid opacity-20" />
+                <DialogHeader className="space-y-1">
+                    <DialogTitle className="text-lg flex items-center gap-2">
+                        <Wallet className="h-4 w-4 text-primary" />
+                        Connect to Stacks Lab
+                    </DialogTitle>
+                    <DialogDescription className="text-sm text-muted-foreground">
+                        Pick your lane: Stacks-first or Bitcoin via Reown.
                     </DialogDescription>
                 </DialogHeader>
-                <div className="grid gap-4 py-4">
+                <div className="grid gap-4 py-5 relative z-10">
+                    <div className="rounded-xl border border-primary/40 bg-primary/10 p-3 text-xs uppercase tracking-[0.2em] text-primary flex items-center gap-2">
+                        Neon bridge • Retro-safe connect
+                    </div>
                     <Button
                         variant="outline"
-                        className="w-full h-16 justify-start gap-4 text-left hover:border-purple-500/50 hover:bg-purple-500/5 transition-all"
+                        className="w-full h-16 justify-start gap-4 text-left border-primary/40 hover:bg-primary/15 hover:border-primary/60 transition-all rounded-2xl"
                         onClick={handleStacksConnect}
                     >
-                        <div className="h-10 w-10 rounded-full bg-purple-500/10 flex items-center justify-center shrink-0">
-                            <Wallet className="h-5 w-5 text-purple-500" />
+                        <div className="h-10 w-10 rounded-full bg-primary/20 flex items-center justify-center shrink-0">
+                            <Wallet className="h-5 w-5 text-primary" />
                         </div>
                         <div>
                             <div className="font-semibold">Stacks Wallet</div>
-                            <div className="text-xs text-muted-foreground">Leather, Xverse, or Hiro Wallet</div>
+                            <div className="text-xs text-muted-foreground">Leather, Xverse, Hiro</div>
                         </div>
+                        <div className="ml-auto text-[10px] uppercase tracking-[0.18em] text-primary">Stacks</div>
                     </Button>
 
                     <Button
                         variant="outline"
-                        className="w-full h-16 justify-start gap-4 text-left hover:border-orange-500/50 hover:bg-orange-500/5 transition-all"
+                        className="w-full h-16 justify-start gap-4 text-left border-secondary/40 hover:bg-secondary/15 hover:border-secondary/60 transition-all rounded-2xl"
                         onClick={handleBitcoinConnect}
                     >
-                        <div className="h-10 w-10 rounded-full bg-orange-500/10 flex items-center justify-center shrink-0">
-                            <Bitcoin className="h-5 w-5 text-orange-500" />
+                        <div className="h-10 w-10 rounded-full bg-secondary/30 flex items-center justify-center shrink-0">
+                            <Bitcoin className="h-5 w-5 text-secondary-foreground" />
                         </div>
                         <div>
                             <div className="font-semibold">Bitcoin Wallet</div>
-                            <div className="text-xs text-muted-foreground">Via WalletConnect (Reown)</div>
+                            <div className="text-xs text-muted-foreground">WalletConnect via Reown</div>
                         </div>
+                        <div className="ml-auto text-[10px] uppercase tracking-[0.18em] text-secondary-foreground">BTC</div>
                     </Button>
                 </div>
-                <p className="text-xs text-center text-muted-foreground">
-                    By connecting, you agree to our Terms of Service
-                </p>
+                <div className="text-[11px] text-center text-muted-foreground">
+                    By connecting, you agree to our Terms of Service.
+                </div>
             </DialogContent>
         </Dialog>
     );
