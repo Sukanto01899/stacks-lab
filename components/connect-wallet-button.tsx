@@ -84,9 +84,13 @@ export function ConnectWalletButton() {
     return (
         <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
             <DialogTrigger asChild>
-                <Button size="sm" className="gap-2">
+                <Button
+                    size="sm"
+                    className="gap-2 rounded-full border-primary/40 bg-primary/10 hover:bg-primary/15 text-primary shadow-[0_8px_24px_rgba(0,0,0,0.2)]"
+                >
+                    <div className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+                    <span className="hidden sm:inline">Link Wallet</span>
                     <Wallet className="h-4 w-4" />
-                    <span className="hidden sm:inline">Connect</span>
                 </Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-md border border-primary/40 bg-background/90 backdrop-blur-lg shadow-[0_12px_40px_rgba(0,0,0,0.35)]">
