@@ -1,0 +1,76 @@
+---
+id: 0
+name: Testnet deployment (Clarity 4)
+network: testnet
+stacks-node: "https://api.testnet.hiro.so"
+bitcoin-node: "http://blockstream.info:80"
+plan:
+  batches:
+    - id: 0
+      transactions:
+        - contract-publish:
+            contract-name: sip009-nft-trait-v4
+            expected-sender: ST31DP8F8CF2GXSZBHHHK5J6Y061744E1TP7FRGHT
+            cost: 50000
+            path: contracts/sip009-nft-trait.clar
+            anchor-block-only: true
+            clarity-version: 4
+        - contract-publish:
+            contract-name: sip010-ft-trait-v4
+            expected-sender: ST31DP8F8CF2GXSZBHHHK5J6Y061744E1TP7FRGHT
+            cost: 50000
+            path: contracts/sip010-ft-trait.clar
+            anchor-block-only: true
+            clarity-version: 4
+    - id: 1
+      transactions:
+        - contract-publish:
+            contract-name: reputation-v4
+            expected-sender: ST31DP8F8CF2GXSZBHHHK5J6Y061744E1TP7FRGHT
+            cost: 200000
+            path: contracts/reputation.clar
+            anchor-block-only: true
+            clarity-version: 4
+        - contract-publish:
+            contract-name: liquidity-locker-v4
+            expected-sender: ST31DP8F8CF2GXSZBHHHK5J6Y061744E1TP7FRGHT
+            cost: 200000
+            path: contracts/liquidity-locker.clar
+            anchor-block-only: true
+            clarity-version: 4
+    - id: 2
+      transactions:
+        - contract-publish:
+            contract-name: stacks-hub-avatars-v5
+            expected-sender: ST31DP8F8CF2GXSZBHHHK5J6Y061744E1TP7FRGHT
+            cost: 380000
+            path: contracts/stacks-hub-avatars.clar
+            anchor-block-only: true
+            clarity-version: 4
+        - contract-publish:
+            contract-name: marketplace-v4
+            expected-sender: ST31DP8F8CF2GXSZBHHHK5J6Y061744E1TP7FRGHT
+            cost: 250000
+            path: contracts/marketplace.clar
+            anchor-block-only: true
+            clarity-version: 4
+    - id: 3
+      transactions:
+        - contract-publish:
+            contract-name: launchpad-v4
+            expected-sender: ST31DP8F8CF2GXSZBHHHK5J6Y061744E1TP7FRGHT
+            cost: 500000
+            path: contracts/launchpad.clar
+            anchor-block-only: true
+            clarity-version: 4
+    - id: 4
+      transactions:
+        - contract-call:
+            contract-id: ST31DP8F8CF2GXSZBHHHK5J6Y061744E1TP7FRGHT.reputation-v4
+            expected-sender: ST31DP8F8CF2GXSZBHHHK5J6Y061744E1TP7FRGHT
+            method: set-authorized
+            parameters:
+              - "'ST31DP8F8CF2GXSZBHHHK5J6Y061744E1TP7FRGHT.launchpad-v4"
+              - true
+            cost: 10000
+      epoch: "3.0"
