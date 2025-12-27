@@ -33,6 +33,15 @@ const getNetworkConfig = (networkType: 'testnet' | 'mainnet') => {
   return { network, contracts, userAddress };
 };
 
+// Safe principal builder with clear error messaging
+const toContractPrincipal = (value: string) => {
+  try {
+    return principalCV(value);
+  } catch (err) {
+    throw new Error(`Invalid contract identifier "${value}". Use "SP.../ST....contract-name" format.`);
+  }
+};
+
 export async function mintAvatar(uri: string, networkType: 'testnet' | 'mainnet' = 'testnet') {
   const { network, contracts, userAddress } = getNetworkConfig(networkType);
   const postCondition = Pc.principal(userAddress).willSendLte(100000000).ustx();
@@ -80,7 +89,7 @@ export async function launchToken(
       contractName,
       functionName: 'launch-token',
       functionArgs: [
-        principalCV(tokenContract),
+        toContractPrincipal(tokenContract),
         stringAsciiCV(name),
         stringAsciiCV(symbol),
         uintCV(decimals),
@@ -115,7 +124,7 @@ export async function buyToken(
       contractName,
       functionName: 'buy',
       functionArgs: [
-        principalCV(tokenContract),
+        toContractPrincipal(tokenContract),
         uintCV(stxAmount)
       ],
       network,
@@ -148,7 +157,7 @@ export async function sellToken(
       contractName,
       functionName: 'sell',
       functionArgs: [
-        principalCV(tokenContract),
+        toContractPrincipal(tokenContract),
         uintCV(tokenAmount)
       ],
       network,
@@ -174,7 +183,7 @@ export async function claimVestedTokens(
       contractName,
       functionName: 'claim-vested-tokens',
       functionArgs: [
-        principalCV(tokenContract)
+        toContractPrincipal(tokenContract)
       ],
       network,
       stxAddress: userAddress,

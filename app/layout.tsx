@@ -37,7 +37,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body
-        className={`${spaceGrotesk.variable} ${plexMono.variable} antialiased min-h-screen bg-background text-foreground tracking-tight`}
+        className={`${spaceGrotesk.variable} ${plexMono.variable} antialiased min-h-screen bg-background text-foreground tracking-tight retro-grid`}
       >
         <BitcoinProvider>
           <RealtimeProvider>

@@ -1,118 +1,118 @@
+import Link from "next/link"
+import { ArrowRight, MessageSquare, Rocket, User, Shield, Zap, Cpu, Radio } from "lucide-react"
 import { Button } from "@/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/ui/card"
-import { ArrowRight, MessageSquare, Rocket, User, Shield, Zap, Globe, Lock } from "lucide-react"
-import Link from "next/link"
 import { Logo } from "@/components/ui/logo"
+
+const features = [
+  { icon: <MessageSquare className="size-6" />, title: "Encrypted Chat", desc: "End-to-end messaging with on-chain keys." },
+  { icon: <User className="size-6" />, title: ".btc Profiles", desc: "Identity, reputation, and holdings in one view." },
+  { icon: <Rocket className="size-6" />, title: "Launchpad", desc: "Ship SIP-010/009 assets with no-code flows." },
+  { icon: <Shield className="size-6" />, title: "Bitcoin Secured", desc: "Stacks settlement with Bitcoin finality." },
+]
+
+const highlights = [
+  { title: "Stacks + Bitcoin", body: "Dual-layer design merges Bitcoin security with expressive Clarity contracts." },
+  { title: "Retro-grade UX", body: "Grid lines, neon accents, and bold typography for a memorable interface." },
+  { title: "Composable Primitives", body: "Wallets, chat, launchpad, and marketplace wired through shared contracts." },
+]
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-background text-foreground flex flex-col overflow-hidden">
-
-      {/* Background Effects */}
-      <div className="fixed inset-0 -z-10">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
-        <div className="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-primary/20 opacity-20 blur-[100px]"></div>
-        <div className="absolute right-0 bottom-0 -z-10 h-[500px] w-[500px] rounded-full bg-orange-500/10 opacity-20 blur-[120px]"></div>
-      </div>
+    <div className="min-h-screen bg-background text-foreground flex flex-col">
+      <div className="absolute inset-0 -z-10 retro-grid opacity-40" />
+      <div className="absolute inset-0 -z-20 blur-3xl opacity-60 bg-[radial-gradient(circle_at_20%_20%,rgba(0,255,255,0.18),transparent_35%),radial-gradient(circle_at_80%_10%,rgba(255,170,0,0.12),transparent_30%),radial-gradient(circle_at_30%_80%,rgba(255,0,170,0.16),transparent_32%)]" />
 
       <main className="flex-1">
-        {/* Hero Section */}
-        <section className="relative pt-32 pb-20 md:pt-48 md:pb-32">
-          <div className="container px-4 md:px-6 flex flex-col items-center text-center max-w-4xl mx-auto">
-            <div className="mb-8 animate-in fade-in zoom-in duration-1000">
-              <div className="relative">
-                <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-orange-500 to-amber-600 opacity-75 blur-lg animate-pulse"></div>
-                <Logo className="relative w-24 h-24 md:w-32 md:h-32 drop-shadow-2xl bg-background rounded-full p-2" />
+        <section className="container px-4 md:px-8 pt-24 md:pt-32">
+          <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-center">
+            <div className="space-y-6">
+              <div className="inline-flex items-center gap-3 rounded-full px-4 py-2 bg-primary/10 text-primary border border-primary/30 shadow-[0_0_0_1px_rgba(0,0,0,0.12)]">
+                <Radio className="size-4" />
+                <span className="text-xs uppercase tracking-[0.2em]">Bitcoin Native Stack</span>
+              </div>
+              <h1 className="text-4xl md:text-6xl font-black leading-tight">
+                Build, chat, and trade <span className="text-gradient">on-chain</span> with Stacks Lab.
+              </h1>
+              <p className="text-lg md:text-xl text-muted-foreground max-w-2xl">
+                A retro-futurist cockpit for Bitcoin L2: encrypted chat, .btc profiles, a launchpad, and a curated marketplace—wired to Clarity.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button size="lg" asChild className="rounded-full px-7 shadow-lg shadow-primary/30">
+                  <Link href="/chat">
+                    Enter Chat <MessageSquare className="ml-2 size-5" />
+                  </Link>
+                </Button>
+                <Button size="lg" variant="outline" asChild className="rounded-full px-7 border-primary/30 hover:bg-primary/10">
+                  <Link href="/launchpad">
+                    Launch Asset <Rocket className="ml-2 size-5" />
+                  </Link>
+                </Button>
+              </div>
+              <div className="grid sm:grid-cols-3 gap-3 pt-4">
+                {highlights.map((h) => (
+                  <div key={h.title} className="rounded-xl border border-border/60 bg-card/60 p-4 shadow-[0_8px_20px_rgba(0,0,0,0.2)]">
+                    <div className="text-sm font-semibold text-primary mb-1">{h.title}</div>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{h.body}</p>
+                  </div>
+                ))}
               </div>
             </div>
-
-            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 animate-in slide-in-from-bottom-4 fade-in duration-1000 delay-200">
-              The <span className="text-gradient">Bitcoin Superapp</span>
-            </h1>
-
-            <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed animate-in slide-in-from-bottom-4 fade-in duration-1000 delay-300">
-              Chat, trade, and launch tokens on Stacks. <br className="hidden md:block" />
-              Fully on-chain, encrypted, and powered by your .btc identity.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-5 justify-center w-full sm:w-auto animate-in slide-in-from-bottom-4 fade-in duration-1000 delay-500">
-              <Button size="lg" className="h-14 px-8 text-lg rounded-full shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all" asChild>
-                <Link href="/chat">
-                  Start Chatting <MessageSquare className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
-              <Button size="lg" variant="outline" className="h-14 px-8 text-lg rounded-full border-primary/20 hover:bg-primary/5 backdrop-blur-sm" asChild>
-                <Link href="/launchpad">
-                  Launch Token <Rocket className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
+            <div className="relative w-full">
+              <div className="absolute inset-0 blur-3xl opacity-60 bg-[radial-gradient(circle_at_40%_30%,rgba(0,255,255,0.28),transparent_35%),radial-gradient(circle_at_70%_60%,rgba(255,170,0,0.18),transparent_30%)]" />
+              <div className="relative glass-card rounded-3xl p-6 border border-primary/30 retro-scanline">
+                <div className="flex items-center gap-3 mb-6">
+                  <Logo className="size-10" />
+                  <div>
+                    <div className="text-xs uppercase tracking-[0.22em] text-muted-foreground">Stacks Lab</div>
+                    <div className="text-lg font-semibold">Superapp Console</div>
+                  </div>
+                </div>
+                <div className="grid gap-3">
+                  <InfoRow icon={<Zap className="size-4" />} label="Live" value="Mainnet contracts synced" />
+                  <InfoRow icon={<Cpu className="size-4" />} label="Launchpad" value="Bonding curve + vesting" />
+                  <InfoRow icon={<Shield className="size-4" />} label="Security" value="E2EE chat + Bitcoin finality" />
+                  <InfoRow icon={<User className="size-4" />} label="Identity" value=".btc-first authentication" />
+                </div>
+                <div className="mt-6 rounded-2xl border border-primary/40 bg-primary/10 p-4 text-sm text-primary-foreground/80">
+                  <div className="font-semibold text-primary-foreground">Tip</div>
+                  Connect Leather or Xverse, then mint an avatar before launching your asset to unlock marketplace perks.
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Features Grid */}
-        <section id="features" className="py-24 px-4 md:px-6 relative">
-          <div className="container mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-5xl font-bold mb-4">Everything you need.</h2>
-              <p className="text-muted-foreground text-lg">Built for the sovereign individual.</p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <FeatureCard
-                icon={<MessageSquare className="size-6" />}
-                title="Encrypted Chat"
-                description="End-to-end encrypted messaging using your Stacks keys. Private by default."
-                delay={0}
-              />
-              <FeatureCard
-                icon={<User className="size-6" />}
-                title=".btc Profiles"
-                description="Your Web3 identity. Reputation, social graph, and assets in one place."
-                delay={100}
-              />
-              <FeatureCard
-                icon={<Rocket className="size-6" />}
-                title="Token Launchpad"
-                description="Launch SIP-021 tokens and NFTs with no code. Instant bonding curves."
-                delay={200}
-              />
-              <FeatureCard
-                icon={<Shield className="size-6" />}
-                title="Bitcoin Secured"
-                description="Leveraging Stacks to inherit Bitcoin's security and finality."
-                delay={300}
-              />
-            </div>
+        <section className="container px-4 md:px-8 py-16">
+          <div className="flex items-center justify-between gap-4 flex-wrap mb-10">
+            <h2 className="text-2xl md:text-3xl font-bold">Capabilities</h2>
+            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-border/60 to-transparent" />
           </div>
-        </section>
-
-        {/* CTA Section */}
-        <section className="py-20 px-4">
-          <div className="container max-w-5xl mx-auto">
-            <div className="glass-card rounded-3xl p-8 md:p-16 text-center relative overflow-hidden">
-              <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-primary/5 to-transparent -z-10"></div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to join the economy?</h2>
-              <p className="text-lg text-muted-foreground mb-8 max-w-xl mx-auto">
-                Connect your Leather or Xverse wallet and claim your on-chain identity today.
-              </p>
-              <Button size="lg" className="rounded-full h-12 px-8" asChild>
-                <Link href="/profile/me">
-                  Claim Profile <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+            {features.map((f) => (
+              <Card key={f.title} className="glass-card border border-border/60 hover:border-primary/50 transition-all duration-200 hover:-translate-y-1">
+                <CardHeader>
+                  <div className="size-12 rounded-xl bg-primary/15 text-primary flex items-center justify-center mb-3">
+                    {f.icon}
+                  </div>
+                  <CardTitle className="text-lg">{f.title}</CardTitle>
+                </CardHeader>
+                <CardContent className="text-sm text-muted-foreground leading-relaxed">
+                  {f.desc}
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </section>
       </main>
 
-      <footer className="border-t border-white/5 py-12 px-4 md:px-6 bg-background/50 backdrop-blur-xl">
+      <footer className="border-t border-border/60 py-10 px-4 md:px-8 bg-background/80 backdrop-blur">
         <div className="container mx-auto flex flex-col md:flex-row justify-between items-center gap-6 text-sm text-muted-foreground">
-          <div className="flex items-center gap-2">
-            <Logo className="size-6 opacity-50" />
-            <p>© 2025 Stacks Lab. Built on Bitcoin.</p>
+          <div className="flex items-center gap-3">
+            <Logo className="size-6 opacity-70" />
+            <p>(c) 2025 Stacks Lab. Bitcoin-native by design.</p>
           </div>
-          <div className="flex gap-8">
+          <div className="flex gap-6">
             <Link href="#" className="hover:text-primary transition-colors">Terms</Link>
             <Link href="#" className="hover:text-primary transition-colors">Privacy</Link>
             <Link href="#" className="hover:text-primary transition-colors">Twitter</Link>
@@ -124,18 +124,14 @@ export default function LandingPage() {
   )
 }
 
-function FeatureCard({ icon, title, description, delay }: { icon: React.ReactNode, title: string, description: string, delay: number }) {
+function InfoRow({ icon, label, value }: { icon: React.ReactNode, label: string, value: string }) {
   return (
-    <Card className="glass-card border-white/5 hover:border-primary/30 transition-all duration-300 hover:-translate-y-1 group">
-      <CardHeader>
-        <div className="size-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-4 group-hover:scale-110 transition-transform duration-300">
-          {icon}
-        </div>
-        <CardTitle className="text-xl group-hover:text-primary transition-colors">{title}</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <p className="text-muted-foreground leading-relaxed">{description}</p>
-      </CardContent>
-    </Card>
+    <div className="flex items-center justify-between rounded-xl border border-border/60 bg-muted/40 px-3 py-2.5 text-sm">
+      <div className="flex items-center gap-2 text-muted-foreground">
+        {icon}
+        <span>{label}</span>
+      </div>
+      <span className="font-medium text-foreground">{value}</span>
+    </div>
   )
 }
