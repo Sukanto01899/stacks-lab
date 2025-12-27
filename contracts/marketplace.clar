@@ -33,8 +33,7 @@
       (asserts! (> price u0) err-price-zero)
       
       ;; Transfer NFT to escrow (this contract)
-      ;; Get contract principal using as-contract?
-      (let ((contract-principal (unwrap-panic (as-contract? ((with-all-assets-unsafe)) tx-sender))))
+      (let ((contract-principal (as-contract tx-sender)))
         (try! (contract-call? nft-contract transfer token-id tx-sender contract-principal))
       )
       
@@ -58,9 +57,8 @@
       (try! (stx-transfer? price tx-sender seller))
       
       ;; Transfer NFT to buyer (contract sends to tx-sender)
-      (unwrap! (as-contract? ((with-all-assets-unsafe))
-          (try! (contract-call? nft-contract transfer token-id tx-sender tx-sender)))
-        (err u999))
+      (try! (as-contract
+          (contract-call? nft-contract transfer token-id tx-sender tx-sender)))
       
       ;; Remove listing
       (map-delete listings token-id)
@@ -81,9 +79,8 @@
       (asserts! (is-eq tx-sender seller) err-not-token-owner)
       
       ;; Return NFT to seller (contract sends to seller)
-      (unwrap! (as-contract? ((with-all-assets-unsafe))
-          (try! (contract-call? nft-contract transfer token-id tx-sender seller)))
-        (err u999))
+      (try! (as-contract
+          (contract-call? nft-contract transfer token-id tx-sender seller)))
       
       ;; Remove listing
       (map-delete listings token-id)

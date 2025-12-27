@@ -1,58 +1,58 @@
 ---
 id: 0
-name: Testnet deployment
-network: testnet
-stacks-node: "https://api.testnet.hiro.so"
-bitcoin-node: "http://blockstack:blockstacksystem@bitcoind.testnet.stacks.co:18332"
+name: Mainnet deployment
+network: mainnet
+stacks-node: "https://api.mainnet.hiro.so"
+bitcoin-node: "http://blockstack:blockstacksystem@bitcoin.blockstack.com:8332"
 plan:
   batches:
     - id: 0
       transactions:
         - contract-publish:
             contract-name: sip010-ft-trait-v4
-            expected-sender: ST1G4ZDXED8XM2XJ4Q4GJ7F4PG4EJQ1KKXVPSAX13
+            expected-sender: SP1G4ZDXED8XM2XJ4Q4GJ7F4PG4EJQ1KKXRCD0S3K
             cost: 8190
             path: "contracts\\sip010-ft-trait.clar"
             anchor-block-only: true
             clarity-version: 2
         - contract-publish:
             contract-name: launchpad-v4
-            expected-sender: ST1G4ZDXED8XM2XJ4Q4GJ7F4PG4EJQ1KKXVPSAX13
+            expected-sender: SP1G4ZDXED8XM2XJ4Q4GJ7F4PG4EJQ1KKXRCD0S3K
             cost: 129560
             path: "contracts\\launchpad.clar"
             anchor-block-only: true
             clarity-version: 2
         - contract-publish:
             contract-name: liquidity-locker-v4
-            expected-sender: ST1G4ZDXED8XM2XJ4Q4GJ7F4PG4EJQ1KKXVPSAX13
+            expected-sender: SP1G4ZDXED8XM2XJ4Q4GJ7F4PG4EJQ1KKXRCD0S3K
             cost: 27780
             path: "contracts\\liquidity-locker.clar"
             anchor-block-only: true
             clarity-version: 2
         - contract-publish:
             contract-name: sip009-nft-trait-v4
-            expected-sender: ST1G4ZDXED8XM2XJ4Q4GJ7F4PG4EJQ1KKXVPSAX13
+            expected-sender: SP1G4ZDXED8XM2XJ4Q4GJ7F4PG4EJQ1KKXRCD0S3K
             cost: 5010
             path: "contracts\\sip009-nft-trait.clar"
             anchor-block-only: true
             clarity-version: 2
         - contract-publish:
             contract-name: marketplace-v4
-            expected-sender: ST1G4ZDXED8XM2XJ4Q4GJ7F4PG4EJQ1KKXVPSAX13
+            expected-sender: SP1G4ZDXED8XM2XJ4Q4GJ7F4PG4EJQ1KKXRCD0S3K
             cost: 26240
             path: "contracts\\marketplace.clar"
             anchor-block-only: true
             clarity-version: 2
         - contract-publish:
             contract-name: reputation-v4
-            expected-sender: ST1G4ZDXED8XM2XJ4Q4GJ7F4PG4EJQ1KKXVPSAX13
+            expected-sender: SP1G4ZDXED8XM2XJ4Q4GJ7F4PG4EJQ1KKXRCD0S3K
             cost: 19440
             path: "contracts\\reputation.clar"
             anchor-block-only: true
             clarity-version: 2
         - contract-publish:
             contract-name: stacks-hub-avatars-v5
-            expected-sender: ST1G4ZDXED8XM2XJ4Q4GJ7F4PG4EJQ1KKXVPSAX13
+            expected-sender: SP1G4ZDXED8XM2XJ4Q4GJ7F4PG4EJQ1KKXRCD0S3K
             cost: 18110
             path: "contracts\\stacks-hub-avatars.clar"
             anchor-block-only: true

@@ -4,7 +4,7 @@ import { PostConditionMode, Pc, uintCV, stringAsciiCV, principalCV } from '@stac
 import { getUserSession } from './stacks-client';
 
 export const CONTRACT_ADDRESS_TESTNET = 'ST31DP8F8CF2GXSZBHHHK5J6Y061744E1TP7FRGHT';
-const CONTRACT_ADDRESS_MAINNET = 'SP31DP8F8CF2GXSZBHHHK5J6Y061744E1TP7FRGHT'; // Placeholder
+const CONTRACT_ADDRESS_MAINNET = 'SP1G4ZDXED8XM2XJ4Q4GJ7F4PG4EJQ1KKXRCD0S3K';
 
 export const CONTRACTS = {
   TESTNET: {
@@ -15,11 +15,11 @@ export const CONTRACTS = {
     LIQUIDITY_LOCKER: `${CONTRACT_ADDRESS_TESTNET}.liquidity-locker-v4`,
   },
   MAINNET: {
-    AVATARS: `${CONTRACT_ADDRESS_MAINNET}.stacks-hub-avatars-v2`,
-    MARKETPLACE: `${CONTRACT_ADDRESS_MAINNET}.marketplace`,
-    LAUNCHPAD: `${CONTRACT_ADDRESS_MAINNET}.launchpad-v2`,
-    REPUTATION: `${CONTRACT_ADDRESS_MAINNET}.reputation-v2`,
-    LIQUIDITY_LOCKER: `${CONTRACT_ADDRESS_MAINNET}.liquidity-locker-v2`,
+    AVATARS: `${CONTRACT_ADDRESS_MAINNET}.stacks-hub-avatars-v5`,
+    MARKETPLACE: `${CONTRACT_ADDRESS_MAINNET}.marketplace-v4`,
+    LAUNCHPAD: `${CONTRACT_ADDRESS_MAINNET}.launchpad-v4`,
+    REPUTATION: `${CONTRACT_ADDRESS_MAINNET}.reputation-v4`,
+    LIQUIDITY_LOCKER: `${CONTRACT_ADDRESS_MAINNET}.liquidity-locker-v4`,
   }
 };
 
@@ -202,7 +202,7 @@ export async function getBitcoinBlockHeight(networkType: 'testnet' | 'mainnet' =
 export function generateSip010Contract(name: string, symbol: string, decimals: number, supply: number, uri: string) {
   // Hardcoded Launchpad addresses for permissions
   const LAUNCHPAD_TESTNET = `${CONTRACT_ADDRESS_TESTNET}.launchpad-v4`;
-  const LAUNCHPAD_MAINNET = `${CONTRACT_ADDRESS_MAINNET}.launchpad`;
+  const LAUNCHPAD_MAINNET = `${CONTRACT_ADDRESS_MAINNET}.launchpad-v4`;
 
   // Using our freshly deployed V4 trait for Clarity 4 compatibility
   const TRAIT_REF = `${CONTRACT_ADDRESS_TESTNET}.sip010-ft-trait-v4.sip010-ft-trait`;

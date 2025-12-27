@@ -33,9 +33,8 @@
             ;; Check that unlock height is in future
             (asserts! (> unlock-burn-height burn-block-height) ERR_INVALID_LOCK)
             
-            ;; Transfer tokens to this contract
-            ;; Get contract principal using as-contract?
-            (let ((contract-principal (unwrap-panic (as-contract? ((with-all-assets-unsafe)) tx-sender))))
+            ;; Transfer tokens to this contract (contract principal obtained via as-contract)
+            (let ((contract-principal (as-contract tx-sender)))
               (try! (contract-call? token transfer amount sender contract-principal none))
             )
             
@@ -78,9 +77,8 @@
             (map-set locks lock-id (merge lock { withdrawn: true }))
             
             ;; Transfer tokens from contract to owner
-            (ok (unwrap! (as-contract? ((with-all-assets-unsafe))
-                (try! (contract-call? token transfer (get amount lock) tx-sender owner none)))
-              ERR_INVALID_LOCK))
+            (as-contract
+                (contract-call? token transfer (get amount lock) tx-sender owner none))
         )
     )
 )

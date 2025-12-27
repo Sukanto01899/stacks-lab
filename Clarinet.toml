@@ -11,38 +11,38 @@ cache_dir = "./.cache"
 
 [contracts.launchpad-v4]
 path = "contracts/launchpad.clar"
-clarity_version = 4
-epoch = 'latest'
+clarity_version = 2
+epoch = '2.1'
 
 [contracts.marketplace-v4]
 path = "contracts/marketplace.clar"
-clarity_version = 4
-epoch = 'latest'
+clarity_version = 2
+epoch = '2.1'
 
 [contracts.reputation-v4]
 path = "contracts/reputation.clar"
-clarity_version = 4
-epoch = 'latest'
+clarity_version = 2
+epoch = '2.1'
 
 [contracts.liquidity-locker-v4]
 path = "contracts/liquidity-locker.clar"
-clarity_version = 4
-epoch = 'latest'
+clarity_version = 2
+epoch = '2.1'
 
 [contracts.stacks-hub-avatars-v5]
 path = "contracts/stacks-hub-avatars.clar"
-clarity_version = 4
-epoch = 'latest'
+clarity_version = 2
+epoch = '2.1'
 
 [contracts.sip009-nft-trait-v4]
 path = "contracts/sip009-nft-trait.clar"
-clarity_version = 4
-epoch = 'latest'
+clarity_version = 2
+epoch = '2.1'
 
 [contracts.sip010-ft-trait-v4]
 path = "contracts/sip010-ft-trait.clar"
-clarity_version = 4
-epoch = 'latest'
+clarity_version = 2
+epoch = '2.1'
 
 [repl.analysis]
 passes = ["check_checker"]
