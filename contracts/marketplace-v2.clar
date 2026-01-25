@@ -1,9 +1,9 @@
 
-;; marketplace.clar
+;; marketplace-v2.clar
 ;; Simple NFT Marketplace for Stacks Lab Avatars
 ;; Allows listing and buying of SIP-009 NFTs
 
-(use-trait sip009-nft-trait .sip009-nft-trait-v4.sip009-nft-trait)
+(use-trait sip009-nft-trait .sip009-nft-trait-v2.sip009-nft-trait)
 
 (define-constant contract-owner tx-sender)
 (define-constant err-owner-only (err u100))

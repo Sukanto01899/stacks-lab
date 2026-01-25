@@ -84,51 +84,51 @@ async function main() {
     try {
         // Batch 1: Deploy traits first
         console.log("\n=== BATCH 1: Deploying Traits ===");
-        await deploy('sip009-nft-trait-v4', 'sip009-nft-trait.clar');
+        await deploy('sip009-nft-trait-v2', 'sip009-nft-trait-v2.clar');
         await new Promise(r => setTimeout(r, 8000));
 
-        await deploy('sip010-ft-trait-v4', 'sip010-ft-trait.clar');
+        await deploy('sip010-ft-trait-v2', 'sip010-ft-trait-v2.clar');
         await new Promise(r => setTimeout(r, 8000));
 
         // Batch 2: Deploy base contracts
         console.log("\n=== BATCH 2: Deploying Base Contracts ===");
-        await deploy('reputation-v4', 'reputation.clar');
+        await deploy('reputation-v2', 'reputation-v2.clar');
         await new Promise(r => setTimeout(r, 8000));
 
-        await deploy('liquidity-locker-v4', 'liquidity-locker.clar');
+        await deploy('liquidity-locker-v2', 'liquidity-locker-v2.clar');
         await new Promise(r => setTimeout(r, 8000));
 
         // Batch 3: Deploy NFT contracts
         console.log("\n=== BATCH 3: Deploying NFT Contracts ===");
-        await deploy('stacks-hub-avatars-v5', 'stacks-hub-avatars.clar');
+        await deploy('stacks-hub-avatars-v2', 'stacks-hub-avatars-v2.clar');
         await new Promise(r => setTimeout(r, 8000));
 
-        await deploy('marketplace-v4', 'marketplace.clar');
+        await deploy('marketplace-v2', 'marketplace-v2.clar');
         await new Promise(r => setTimeout(r, 8000));
 
         // Batch 4: Deploy main launchpad
         console.log("\n=== BATCH 4: Deploying Launchpad ===");
-        await deploy('launchpad-v4', 'launchpad.clar');
+        await deploy('launchpad-v2', 'launchpad-v2.clar');
         await new Promise(r => setTimeout(r, 8000));
 
         console.log("\n✅ ALL DEPLOYMENT TRANSACTIONS SENT!");
         console.log("================================================");
         console.log("📝 Deployed Contracts (Clarity 4):");
-        console.log(`   1. Launchpad: ${senderAddress}.launchpad-v4`);
-        console.log(`   2. Reputation: ${senderAddress}.reputation-v4`);
-        console.log(`   3. Liquidity Locker: ${senderAddress}.liquidity-locker-v4`);
-        console.log(`   4. Marketplace: ${senderAddress}.marketplace-v4`);
-        console.log(`   5. Avatars NFT: ${senderAddress}.stacks-hub-avatars-v5`);
-        console.log(`   6. SIP-009 Trait: ${senderAddress}.sip009-nft-trait-v4`);
-        console.log(`   7. SIP-010 Trait: ${senderAddress}.sip010-ft-trait-v4`);
+        console.log(`   1. Launchpad: ${senderAddress}.launchpad-v2`);
+        console.log(`   2. Reputation: ${senderAddress}.reputation-v2`);
+        console.log(`   3. Liquidity Locker: ${senderAddress}.liquidity-locker-v2`);
+        console.log(`   4. Marketplace: ${senderAddress}.marketplace-v2`);
+        console.log(`   5. Avatars NFT: ${senderAddress}.stacks-hub-avatars-v2`);
+        console.log(`   6. SIP-009 Trait: ${senderAddress}.sip009-nft-trait-v2`);
+        console.log(`   7. SIP-010 Trait: ${senderAddress}.sip010-ft-trait-v2`);
         console.log("================================================");
         console.log("🔗 NEXT STEPS:");
         console.log("1. Wait 10-15 mins for confirmations on testnet explorer:");
         console.log(`   https://explorer.hiro.so/address/${senderAddress}?chain=testnet`);
         console.log("\n2. Update lib/contracts.ts with these new addresses");
         console.log("\n3. Authorize launchpad in reputation contract:");
-        console.log(`   Call: ${senderAddress}.reputation-v4.set-authorized`);
-        console.log(`   Args: ${senderAddress}.launchpad-v4, true`);
+        console.log(`   Call: ${senderAddress}.reputation-v2.set-authorized`);
+        console.log(`   Args: ${senderAddress}.launchpad-v2, true`);
         console.log("================================================");
 
     } catch (error) {

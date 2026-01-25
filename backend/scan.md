@@ -50,7 +50,7 @@
 - **Fix:** Replace with `<Image />` component.
 
 ### 7. Contract Integration
-- **File:** `contracts/reputation.clar`
+- **File:** `contracts/reputation-v2.clar`
 - **Observation:** `sip010-ft-trait` usage needs to be verified against deployed mainnet address or local mock.
 - **Status:** Needs validation in `Clarinet.toml` to ensure traits are properly aliased for mainnet/testnet.
 

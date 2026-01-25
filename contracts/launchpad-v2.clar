@@ -1,8 +1,8 @@
-;; launchpad.clar -- V2
+;; launchpad-v2.clar -- V2
 ;; Bonding Curve Launchpad for Stacks Lab
 ;; Features: Bitcoin Finality, Vesting, Reputation, Liquidity Locking
 
-(use-trait sip010-ft-trait .sip010-ft-trait-v4.sip010-ft-trait)
+(use-trait sip010-ft-trait .sip010-ft-trait-v2.sip010-ft-trait)
 
 ;; Traits for interaction
 ;; Traits for interaction

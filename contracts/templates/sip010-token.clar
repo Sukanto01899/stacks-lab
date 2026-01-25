@@ -4,8 +4,8 @@
 ;; Implements the SIP-010 FT Trait
 ;; deployed by the User (Founder)
 
-(impl-trait .sip010-ft-trait.sip010-ft-trait)
-(impl-trait .launchpad.launchable-token-trait) ;; Refers to the trait defined in launchpad or a separate file
+(impl-trait .sip010-ft-trait-v2.sip010-ft-trait)
+(impl-trait .launchpad-v2.launchable-token-trait) ;; Refers to the trait defined in launchpad or a separate file
 
 (define-fungible-token hub-token)
 
@@ -20,7 +20,7 @@
 (define-data-var token-decimals uint u6)
 
 ;; Launchpad Contract Principal - Set this to the actual launchpad contract
-(define-constant LAUNCHPAD_CONTRACT .launchpad)
+(define-constant LAUNCHPAD_CONTRACT .launchpad-v2)
 
 (define-public (mint (amount uint) (recipient principal))
     (begin

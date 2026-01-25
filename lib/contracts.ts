@@ -8,18 +8,18 @@ const CONTRACT_ADDRESS_MAINNET = 'SP1G4ZDXED8XM2XJ4Q4GJ7F4PG4EJQ1KKXRCD0S3K';
 
 export const CONTRACTS = {
   TESTNET: {
-    AVATARS: `${CONTRACT_ADDRESS_TESTNET}.stacks-hub-avatars-v5`,
-    MARKETPLACE: `${CONTRACT_ADDRESS_TESTNET}.marketplace-v4`,
-    LAUNCHPAD: `${CONTRACT_ADDRESS_TESTNET}.launchpad-v4`,
-    REPUTATION: `${CONTRACT_ADDRESS_TESTNET}.reputation-v4`,
-    LIQUIDITY_LOCKER: `${CONTRACT_ADDRESS_TESTNET}.liquidity-locker-v4`,
+    AVATARS: `${CONTRACT_ADDRESS_TESTNET}.stacks-hub-avatars-v2`,
+    MARKETPLACE: `${CONTRACT_ADDRESS_TESTNET}.marketplace-v2`,
+    LAUNCHPAD: `${CONTRACT_ADDRESS_TESTNET}.launchpad-v2`,
+    REPUTATION: `${CONTRACT_ADDRESS_TESTNET}.reputation-v2`,
+    LIQUIDITY_LOCKER: `${CONTRACT_ADDRESS_TESTNET}.liquidity-locker-v2`,
   },
   MAINNET: {
-    AVATARS: `${CONTRACT_ADDRESS_MAINNET}.stacks-hub-avatars-v5`,
-    MARKETPLACE: `${CONTRACT_ADDRESS_MAINNET}.marketplace-v4`,
-    LAUNCHPAD: `${CONTRACT_ADDRESS_MAINNET}.launchpad-v4`,
-    REPUTATION: `${CONTRACT_ADDRESS_MAINNET}.reputation-v4`,
-    LIQUIDITY_LOCKER: `${CONTRACT_ADDRESS_MAINNET}.liquidity-locker-v4`,
+    AVATARS: `${CONTRACT_ADDRESS_MAINNET}.stacks-hub-avatars-v2`,
+    MARKETPLACE: `${CONTRACT_ADDRESS_MAINNET}.marketplace-v2`,
+    LAUNCHPAD: `${CONTRACT_ADDRESS_MAINNET}.launchpad-v2`,
+    REPUTATION: `${CONTRACT_ADDRESS_MAINNET}.reputation-v2`,
+    LIQUIDITY_LOCKER: `${CONTRACT_ADDRESS_MAINNET}.liquidity-locker-v2`,
   }
 };
 
@@ -210,11 +210,11 @@ export async function getBitcoinBlockHeight(networkType: 'testnet' | 'mainnet' =
 
 export function generateSip010Contract(name: string, symbol: string, decimals: number, supply: number, uri: string) {
   // Hardcoded Launchpad addresses for permissions
-  const LAUNCHPAD_TESTNET = `${CONTRACT_ADDRESS_TESTNET}.launchpad-v4`;
-  const LAUNCHPAD_MAINNET = `${CONTRACT_ADDRESS_MAINNET}.launchpad-v4`;
+  const LAUNCHPAD_TESTNET = `${CONTRACT_ADDRESS_TESTNET}.launchpad-v2`;
+  const LAUNCHPAD_MAINNET = `${CONTRACT_ADDRESS_MAINNET}.launchpad-v2`;
 
-  // Using our freshly deployed V4 trait for Clarity 4 compatibility
-  const TRAIT_REF = `${CONTRACT_ADDRESS_TESTNET}.sip010-ft-trait-v4.sip010-ft-trait`;
+  // Using our freshly deployed V2 trait for Clarity 4 compatibility
+  const TRAIT_REF = `${CONTRACT_ADDRESS_TESTNET}.sip010-ft-trait-v2.sip010-ft-trait`;
 
   return `
 ;; ${name} Token (${symbol})

@@ -1,5 +1,5 @@
 
-;; sip010-ft-trait.clar
+;; sip010-ft-trait-v2.clar
 (define-trait sip010-ft-trait
   (
     ;; Transfer from the caller to a new principal
