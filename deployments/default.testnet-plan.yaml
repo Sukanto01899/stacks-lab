@@ -9,51 +9,51 @@ plan:
     - id: 0
       transactions:
         - contract-publish:
-            contract-name: sip010-ft-trait-v4
+            contract-name: sip010-ft-trait-v2
             expected-sender: ST1G4ZDXED8XM2XJ4Q4GJ7F4PG4EJQ1KKXVPSAX13
-            cost: 8190
+            cost: 8220
             path: "contracts\\sip010-ft-trait-v2.clar"
             anchor-block-only: true
             clarity-version: 2
         - contract-publish:
-            contract-name: launchpad-v4
+            contract-name: launchpad-v2
             expected-sender: ST1G4ZDXED8XM2XJ4Q4GJ7F4PG4EJQ1KKXVPSAX13
-            cost: 129560
+            cost: 129590
             path: "contracts\\launchpad-v2.clar"
             anchor-block-only: true
             clarity-version: 2
         - contract-publish:
-            contract-name: liquidity-locker-v4
+            contract-name: liquidity-locker-v2
             expected-sender: ST1G4ZDXED8XM2XJ4Q4GJ7F4PG4EJQ1KKXVPSAX13
-            cost: 27780
+            cost: 27810
             path: "contracts\\liquidity-locker-v2.clar"
             anchor-block-only: true
             clarity-version: 2
         - contract-publish:
-            contract-name: sip009-nft-trait-v4
+            contract-name: sip009-nft-trait-v2
             expected-sender: ST1G4ZDXED8XM2XJ4Q4GJ7F4PG4EJQ1KKXVPSAX13
             cost: 5010
             path: "contracts\\sip009-nft-trait-v2.clar"
             anchor-block-only: true
             clarity-version: 2
         - contract-publish:
-            contract-name: marketplace-v4
+            contract-name: marketplace-v2
             expected-sender: ST1G4ZDXED8XM2XJ4Q4GJ7F4PG4EJQ1KKXVPSAX13
-            cost: 26240
+            cost: 26270
             path: "contracts\\marketplace-v2.clar"
             anchor-block-only: true
             clarity-version: 2
         - contract-publish:
-            contract-name: reputation-v4
+            contract-name: reputation-v2
             expected-sender: ST1G4ZDXED8XM2XJ4Q4GJ7F4PG4EJQ1KKXVPSAX13
-            cost: 19440
+            cost: 19470
             path: "contracts\\reputation-v2.clar"
             anchor-block-only: true
             clarity-version: 2
         - contract-publish:
-            contract-name: stacks-hub-avatars-v5
+            contract-name: stacks-hub-avatars-v2
             expected-sender: ST1G4ZDXED8XM2XJ4Q4GJ7F4PG4EJQ1KKXVPSAX13
-            cost: 18110
+            cost: 18140
             path: "contracts\\stacks-hub-avatars-v2.clar"
             anchor-block-only: true
             clarity-version: 2
