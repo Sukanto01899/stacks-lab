@@ -1,13 +1,16 @@
 'use client';
 
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useMemo } from 'react';
 import { io, Socket } from 'socket.io-client';
 import { env } from '@/lib/config';
 import { useChatStore } from '@/store/useChatStore';
+import type { Message } from '@/types/message';
+
+type RealtimeMessage = Message & { conversationId: string };
 
 interface RealtimeContextType {
     socket: Socket | null;
-    sendMessage: (conversationId: string, message: any) => void;
+    sendMessage: (conversationId: string, message: Message) => void;
 }
 
 const RealtimeContext = createContext<RealtimeContextType>({
@@ -18,36 +21,32 @@ const RealtimeContext = createContext<RealtimeContextType>({
 export const useRealtimeContext = () => useContext(RealtimeContext);
 
 export function RealtimeProvider({ children }: { children: React.ReactNode }) {
-    const [socket, setSocket] = useState<Socket | null>(null);
+    const socket = useMemo<Socket>(
+        () => io(env.NEXT_PUBLIC_API_URL, { autoConnect: false, reconnection: true }),
+        []
+    );
     const { addMessage } = useChatStore();
 
     useEffect(() => {
-        // Initialize socket
-        const newSocket = io(env.NEXT_PUBLIC_API_URL, {
-            autoConnect: false, // We connect manually or when authenticated ideally
-            reconnection: true,
-        });
-
-        newSocket.on('connect', () => {
+        socket.on('connect', () => {
             console.log('Socket connected');
         });
 
-        newSocket.on('new_message', (data: any) => {
+        socket.on('new_message', (data: RealtimeMessage) => {
             if (data.conversationId) {
                 addMessage(data.conversationId, data);
             }
         });
 
-        newSocket.connect();
-        setSocket(newSocket);
+        socket.connect();
 
         return () => {
-            newSocket.disconnect();
+            socket.disconnect();
         };
-    }, [addMessage]);
+    }, [addMessage, socket]);
 
-    const sendMessage = (conversationId: string, message: any) => {
-        if (socket && socket.connected) {
+    const sendMessage = (conversationId: string, message: Message) => {
+        if (socket?.connected) {
             socket.emit('send_message', { ...message, conversationId });
         } else {
             console.warn('Socket disconnected, cannot send');
