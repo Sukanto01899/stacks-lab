@@ -6,6 +6,7 @@ import { AppConfig, UserSession } from '@stacks/connect';
 import { getUserSession } from '@/lib/stacks-client';
 import { useUserStore } from '@/store/useUserStore';
 import { fetchBtcName } from '@/lib/stacks';
+import { env } from '@/lib/config';
 
 export function useWallet() {
     const { user, setUser, logout, setBtcName } = useUserStore();
@@ -16,7 +17,10 @@ export function useWallet() {
         const userSession = getUserSession();
         if (userSession.isUserSignedIn()) {
             const userData = userSession.loadUserData();
-            const address = userData.profile.stxAddress.testnet;
+            const network = env.NEXT_PUBLIC_STACKS_NETWORK === 'mainnet' ? 'mainnet' : 'testnet';
+            const address = network === 'mainnet'
+                ? userData.profile.stxAddress.mainnet
+                : userData.profile.stxAddress.testnet;
 
             if (!user || user.address !== address) {
                 // Initial set
@@ -28,7 +32,7 @@ export function useWallet() {
                     isAuthenticated: true,
                 });
 
-                fetchBtcName(address, 'testnet').then((name) => {
+                fetchBtcName(address, network).then((name) => {
                     if (name) setBtcName(name);
                 });
             }
@@ -71,15 +75,19 @@ export function useWallet() {
                 manifestPath: '/manifest.json',
                 onFinish: () => {
                     const userData = userSession.loadUserData();
+                    const network = env.NEXT_PUBLIC_STACKS_NETWORK === 'mainnet' ? 'mainnet' : 'testnet';
+                    const address = network === 'mainnet'
+                        ? userData.profile.stxAddress.mainnet
+                        : userData.profile.stxAddress.testnet;
                     setUser({
-                        address: userData.profile.stxAddress.testnet,
-                        stxAddress: userData.profile.stxAddress.testnet,
+                        address,
+                        stxAddress: address,
                         btcName: null,
                         avatarUrl: null,
                         isAuthenticated: true,
                     });
 
-                    fetchBtcName(userData.profile.stxAddress.testnet, 'testnet').then((name) => {
+                    fetchBtcName(address, network).then((name) => {
                         if (name) setBtcName(name);
                     });
                 },

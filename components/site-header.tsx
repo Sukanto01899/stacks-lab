@@ -4,6 +4,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Button } from "@/ui/button"
 import { ClientWalletWrapper } from "@/components/client-wallet-wrapper"
+import { UnifiedWalletStatus } from "@/components/wallet/unified-wallet-status"
 import { Logo } from "@/components/ui/logo"
 import { Rocket, ShoppingBag, Settings, LayoutDashboard, Waves } from "lucide-react"
 import { cn } from "@/lib/utils"
@@ -64,6 +65,7 @@ export function SiteHeader() {
                     <Waves className="size-10" />
                 </div>
             </div>
+            <UnifiedWalletStatus />
         </header>
     )
 }
