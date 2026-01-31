@@ -14,13 +14,13 @@ const DEPLOYER_ADDRESS = 'ST31DP8F8CF2GXSZBHHHK5J6Y061744E1TP7FRGHT';
 
 // Contracts to deploy in order
 const CONTRACTS = [
-  { name: 'sip009-nft-trait-v2', file: 'contracts/sip009-nft-trait-v2.clar' },
-  { name: 'sip010-ft-trait-v2', file: 'contracts/sip010-ft-trait-v2.clar' },
-  { name: 'reputation-v2', file: 'contracts/reputation-v2.clar' },
-  { name: 'liquidity-locker-v2', file: 'contracts/liquidity-locker-v2.clar' },
-  { name: 'stacks-hub-avatars-v2', file: 'contracts/stacks-hub-avatars-v2.clar' },
-  { name: 'marketplace-v2', file: 'contracts/marketplace-v2.clar' },
-  { name: 'launchpad-v2', file: 'contracts/launchpad-v2.clar' },
+  { name: 'sip009-nft-trait-v9', file: 'contracts/sip009-nft-trait-v9.clar' },
+  { name: 'sip010-ft-trait-v9', file: 'contracts/sip010-ft-trait-v9.clar' },
+  { name: 'reputation-v9', file: 'contracts/reputation-v9.clar' },
+  { name: 'liquidity-locker-v9', file: 'contracts/liquidity-locker-v9.clar' },
+  { name: 'stacks-hub-avatars-v9', file: 'contracts/stacks-hub-avatars-v9.clar' },
+  { name: 'marketplace-v9', file: 'contracts/marketplace-v9.clar' },
+  { name: 'launchpad-v9', file: 'contracts/launchpad-v9.clar' },
 ];
 
 async function getPrivateKey(mnemonic: string): Promise<string> {
@@ -126,3 +126,5 @@ async function main() {
 }
 
 main();
+
+

@@ -94,8 +94,8 @@ stacks-hub/
 │   └── package.json
 │
 ├── contracts/                     # Clarity contracts
-│   ├── launchpad-v2.clar             # SIP-021/NFT minting
-│   ├── reputation-v2.clar            # On-chain scores
+│   ├── launchpad-v9.clar             # SIP-021/NFT minting
+│   ├── reputation-v9.clar            # On-chain scores
 │   └── deployed.json              # Mainnet addresses
 │
 ├── tests/                         # Tests
@@ -209,13 +209,13 @@ Efficient: Redis caching for frequent queries.
 Secure: No private keys stored; all signing client-side.
 Scalable: Railway auto-scales; use bullmq for queues if needed.
 
-3. Blockchain Layer (/contracts/)PurposeEnforce trustless launches and reputation, using Clarity for Bitcoin-secured execution.Contract: Launchpad (launchpad-v2.clar)Key Functions:create-token(name, supply, decimals): Mints SIP-021 token.
+3. Blockchain Layer (/contracts/)PurposeEnforce trustless launches and reputation, using Clarity for Bitcoin-secured execution.Contract: Launchpad (launchpad-v9.clar)Key Functions:create-token(name, supply, decimals): Mints SIP-021 token.
 create-nft(collection-name, uris): Mints SIP-015 NFTs.
 collect-fee(amount): STX/sBTC fees to treasury.
 
 State:Maps for token metadata, owner balances.
 
-Contract: Reputation (reputation-v2.clar)Key Functions:update-score(principal, score): Adjusts reputation based on launches.
+Contract: Reputation (reputation-v9.clar)Key Functions:update-score(principal, score): Adjusts reputation based on launches.
 get-score(principal): Queries score.
 
 Best PracticesAudited forks from Megapont.
@@ -296,4 +296,6 @@ Document Version: 1.0
 Last Updated: 2025-12-06
 Maintainer: Lead Software Architect
 Status: Ready for Implementation
+
+
 

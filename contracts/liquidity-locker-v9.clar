@@ -1,9 +1,9 @@
 
-;; liquidity-locker-v2.clar
+;; liquidity-locker-v9.clar
 ;; Trustless Liquidity Locker for Stacks Lab
 ;; Locks SIP-010 tokens until a specific Bitcoin block height.
 
-(use-trait sip010-ft-trait .sip010-ft-trait-v2.sip010-ft-trait)
+(use-trait sip010-ft-trait .sip010-ft-trait-v9.sip010-ft-trait)
 
 (define-constant ERR_NOT_AUTHORIZED (err u1000))
 (define-constant ERR_LOCK_STILL_ACTIVE (err u1001))
@@ -86,3 +86,5 @@
 (define-read-only (get-lock (lock-id uint))
     (map-get? locks lock-id)
 )
+
+

@@ -4,7 +4,7 @@
 
 ### ✅ What's Working (Real Implementation)
 1. **NFT Marketplace** - Fully functional
-   - Real contract integration with `stacks-hub-avatars-v2`
+   - Real contract integration with `stacks-hub-avatars-v9`
    - Sequential minting (only next ID can be minted)
    - Live stats from blockchain
    - Balance checking before mint
@@ -63,13 +63,13 @@ const AVATARS = Array.from({ length: 100 }, (_, i) => ({
 ## 🏗️ Contracts Needed (Clarity 4)
 
 ### ✅ Already Have:
-1. ✅ `launchpad-v2.clar` - Bonding curve token launcher
-2. ✅ `stacks-hub-avatars-v2.clar` - NFT collection
-3. ✅ `marketplace-v2.clar` - NFT marketplace
-4. ✅ `reputation-v2.clar` - Reputation system
-5. ✅ `liquidity-locker-v2.clar` - Liquidity locking
-6. ✅ `sip009-nft-trait-v2.clar` - NFT trait
-7. ✅ `sip010-ft-trait-v2.clar` - FT trait (v2)
+1. ✅ `launchpad-v9.clar` - Bonding curve token launcher
+2. ✅ `stacks-hub-avatars-v9.clar` - NFT collection
+3. ✅ `marketplace-v9.clar` - NFT marketplace
+4. ✅ `reputation-v9.clar` - Reputation system
+5. ✅ `liquidity-locker-v9.clar` - Liquidity locking
+6. ✅ `sip009-nft-trait-v9.clar` - NFT trait
+7. ✅ `sip010-ft-trait-v9.clar` - FT trait (v9)
 
 ### 🆕 Contracts to Add:
 
@@ -257,12 +257,12 @@ interface WalletState {
 
 ## 📊 Contract Deployment Checklist
 
-- [ ] `sip010-ft-trait-v2.clar` (Already deployed: ST31DP8F8CF2GXSZBHHHK5J6Y061744E1TP7FRGHT.sip010-ft-trait-v2)
-- [ ] `stacks-hub-avatars-v2.clar` (Already deployed)
-- [ ] `launchpad-v2.clar` (Need to deploy)
-- [ ] `marketplace-v2.clar` (Need to deploy)
-- [ ] `reputation-v2.clar` (Need to deploy)
-- [ ] `liquidity-locker-v2.clar` (Need to deploy)
+- [ ] `sip010-ft-trait-v9.clar` (Already deployed: ST31DP8F8CF2GXSZBHHHK5J6Y061744E1TP7FRGHT.sip010-ft-trait-v9)
+- [ ] `stacks-hub-avatars-v9.clar` (Already deployed)
+- [ ] `launchpad-v9.clar` (Need to deploy)
+- [ ] `marketplace-v9.clar` (Need to deploy)
+- [ ] `reputation-v9.clar` (Need to deploy)
+- [ ] `liquidity-locker-v9.clar` (Need to deploy)
 
 ---
 
@@ -295,3 +295,5 @@ interface WalletState {
 3. API documentation for backend (when ready)
 4. Deployment guide
 5. Troubleshooting guide
+
+

@@ -1,5 +1,5 @@
 
-;; sip010-ft-trait-v2.clar
+;; sip010-ft-trait-v9.clar
 (define-trait sip010-ft-trait
   (
     ;; Transfer from the caller to a new principal
@@ -24,3 +24,5 @@
     (get-balance (principal) (response uint uint))
   )
 )
+
+

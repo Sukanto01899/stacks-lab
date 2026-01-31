@@ -1,8 +1,8 @@
-;; reputation-v2.clar
+;; reputation-v9.clar
 ;; On-chain Reputation System for Stacks Lab
 ;; Tracks user activity and calculates a reputation score
 
-(use-trait sip010-ft-trait .sip010-ft-trait-v2.sip010-ft-trait)
+(use-trait sip010-ft-trait .sip010-ft-trait-v9.sip010-ft-trait)
 
 (define-constant contract-owner tx-sender)
 (define-constant err-owner-only (err u100))
@@ -76,3 +76,5 @@
     )
   )
 )
+
+

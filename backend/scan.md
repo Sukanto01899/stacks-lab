@@ -50,7 +50,7 @@
 - **Fix:** Replace with `<Image />` component.
 
 ### 7. Contract Integration
-- **File:** `contracts/reputation-v2.clar`
+- **File:** `contracts/reputation-v9.clar`
 - **Observation:** `sip010-ft-trait` usage needs to be verified against deployed mainnet address or local mock.
 - **Status:** Needs validation in `Clarinet.toml` to ensure traits are properly aliased for mainnet/testnet.
 
@@ -71,3 +71,5 @@
 ### Phase 3: Features & Polish
 7. [ ] **Contracts**: Verify Trait implementations and deploy script.
 8. [ ] **UI**: Virtualize lists in Chat and Profile for performance.
+
+

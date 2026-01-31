@@ -9,52 +9,52 @@ plan:
     - id: 0
       transactions:
         - contract-publish:
-            contract-name: sip010-ft-trait-v2
+            contract-name: sip010-ft-trait-v9
             expected-sender: ST1K2XGT5RNGT42N49BH936VDF8NXWNZJY0N432CM
-            cost: 8220
-            path: "contracts\\sip010-ft-trait-v2.clar"
+            cost: 8240
+            path: "contracts\\sip010-ft-trait-v9.clar"
             anchor-block-only: true
             clarity-version: 2
         - contract-publish:
-            contract-name: launchpad-v2
+            contract-name: launchpad-v9
             expected-sender: ST1K2XGT5RNGT42N49BH936VDF8NXWNZJY0N432CM
-            cost: 129590
-            path: "contracts\\launchpad-v2.clar"
+            cost: 129610
+            path: "contracts\\launchpad-v9.clar"
             anchor-block-only: true
             clarity-version: 2
         - contract-publish:
-            contract-name: liquidity-locker-v2
+            contract-name: liquidity-locker-v9
             expected-sender: ST1K2XGT5RNGT42N49BH936VDF8NXWNZJY0N432CM
-            cost: 27810
-            path: "contracts\\liquidity-locker-v2.clar"
+            cost: 27830
+            path: "contracts\\liquidity-locker-v9.clar"
             anchor-block-only: true
             clarity-version: 2
         - contract-publish:
-            contract-name: sip009-nft-trait-v2
+            contract-name: sip009-nft-trait-v9
             expected-sender: ST1K2XGT5RNGT42N49BH936VDF8NXWNZJY0N432CM
             cost: 5010
-            path: "contracts\\sip009-nft-trait-v2.clar"
+            path: "contracts\\sip009-nft-trait-v9.clar"
             anchor-block-only: true
             clarity-version: 2
         - contract-publish:
-            contract-name: marketplace-v2
+            contract-name: marketplace-v9
             expected-sender: ST1K2XGT5RNGT42N49BH936VDF8NXWNZJY0N432CM
-            cost: 26270
-            path: "contracts\\marketplace-v2.clar"
+            cost: 26290
+            path: "contracts\\marketplace-v9.clar"
             anchor-block-only: true
             clarity-version: 2
         - contract-publish:
-            contract-name: reputation-v2
+            contract-name: reputation-v9
             expected-sender: ST1K2XGT5RNGT42N49BH936VDF8NXWNZJY0N432CM
-            cost: 19470
-            path: "contracts\\reputation-v2.clar"
+            cost: 19490
+            path: "contracts\\reputation-v9.clar"
             anchor-block-only: true
             clarity-version: 2
         - contract-publish:
-            contract-name: stacks-hub-avatars-v2
+            contract-name: stacks-hub-avatars-v9
             expected-sender: ST1K2XGT5RNGT42N49BH936VDF8NXWNZJY0N432CM
-            cost: 18140
-            path: "contracts\\stacks-hub-avatars-v2.clar"
+            cost: 18160
+            path: "contracts\\stacks-hub-avatars-v9.clar"
             anchor-block-only: true
             clarity-version: 2
       epoch: "2.1"

@@ -7,19 +7,19 @@
 ## 📋 **Deployment Order (CRITICAL - Deploy in this exact order)**
 
 ### **Batch 1: Traits (Deploy First)**
-1. ✅ `sip009-nft-trait-v2` - NFT trait interface
-2. ✅ `sip010-ft-trait-v2` - FT trait interface
+1. ✅ `sip009-nft-trait-v9` - NFT trait interface
+2. ✅ `sip010-ft-trait-v9` - FT trait interface
 
 ### **Batch 2: Core Contracts**
-3. ✅ `reputation-v2` - Reputation system
-4. ✅ `liquidity-locker-v2` - Liquidity locking
+3. ✅ `reputation-v9` - Reputation system
+4. ✅ `liquidity-locker-v9` - Liquidity locking
 
 ### **Batch 3: Main Contracts**
-5. ✅ `stacks-hub-avatars-v2` - Avatar NFTs
-6. ✅ `marketplace-v2` - NFT marketplace
+5. ✅ `stacks-hub-avatars-v9` - Avatar NFTs
+6. ✅ `marketplace-v9` - NFT marketplace
 
 ### **Batch 4: Launchpad**
-7. ✅ `launchpad-v2` - Token launcher
+7. ✅ `launchpad-v9` - Token launcher
 
 ### **Batch 5: Configuration**
 8. ✅ Call `set-authorized` on reputation contract to authorize launchpad
@@ -45,62 +45,62 @@ For each contract in order:
 4. **Network**: Testnet
 5. **Wallet**: Connect your wallet (ST31DP8F8CF2GXSZBHHHK5J6Y061744E1TP7FRGHT)
 
-#### Contract 1: `sip009-nft-trait-v2`
+#### Contract 1: `sip009-nft-trait-v9`
 ```clarity
-File: contracts/sip009-nft-trait-v2.clar
-Name: sip009-nft-trait-v2
+File: contracts/sip009-nft-trait-v9.clar
+Name: sip009-nft-trait-v9
 Cost: ~0.05 STX
 ```
 
-#### Contract 2: `sip010-ft-trait-v2`
+#### Contract 2: `sip010-ft-trait-v9`
 ```clarity
-File: contracts/sip010-ft-trait-v2.clar
-Name: sip010-ft-trait-v2
+File: contracts/sip010-ft-trait-v9.clar
+Name: sip010-ft-trait-v9
 Cost: ~0.05 STX
 ```
 
-#### Contract 3: `reputation-v2`
+#### Contract 3: `reputation-v9`
 ```clarity
-File: contracts/reputation-v2.clar
-Name: reputation-v2
+File: contracts/reputation-v9.clar
+Name: reputation-v9
 Cost: ~0.2 STX
 ```
 
-#### Contract 4: `liquidity-locker-v2`
+#### Contract 4: `liquidity-locker-v9`
 ```clarity
-File: contracts/liquidity-locker-v2.clar
-Name: liquidity-locker-v2
+File: contracts/liquidity-locker-v9.clar
+Name: liquidity-locker-v9
 Cost: ~0.2 STX
 ```
 
-#### Contract 5: `stacks-hub-avatars-v2`
+#### Contract 5: `stacks-hub-avatars-v9`
 ```clarity
-File: contracts/stacks-hub-avatars-v2.clar
-Name: stacks-hub-avatars-v2
+File: contracts/stacks-hub-avatars-v9.clar
+Name: stacks-hub-avatars-v9
 Cost: ~0.38 STX
 ```
 
-#### Contract 6: `marketplace-v2`
+#### Contract 6: `marketplace-v9`
 ```clarity
-File: contracts/marketplace-v2.clar
-Name: marketplace-v2
+File: contracts/marketplace-v9.clar
+Name: marketplace-v9
 Cost: ~0.25 STX
 ```
 
-#### Contract 7: `launchpad-v2`
+#### Contract 7: `launchpad-v9`
 ```clarity
-File: contracts/launchpad-v2.clar
-Name: launchpad-v2
+File: contracts/launchpad-v9.clar
+Name: launchpad-v9
 Cost: ~0.5 STX
 ```
 
 ### Step 4: Configure Reputation Contract
 After all contracts are deployed, call this function:
 
-**Contract**: `ST31DP8F8CF2GXSZBHHHK5J6Y061744E1TP7FRGHT.reputation-v2`
+**Contract**: `ST31DP8F8CF2GXSZBHHHK5J6Y061744E1TP7FRGHT.reputation-v9`
 **Function**: `set-authorized`
 **Parameters**:
-- `authorized`: `'ST31DP8F8CF2GXSZBHHHK5J6Y061744E1TP7FRGHT.launchpad-v2`
+- `authorized`: `'ST31DP8F8CF2GXSZBHHHK5J6Y061744E1TP7FRGHT.launchpad-v9`
 - `enabled`: `true`
 
 ---
@@ -134,8 +134,8 @@ npm install -g @stacks/cli
 clarinet deployments apply -p deployments/default.testnet-plan.yaml --no-dashboard
 
 # Or deploy contracts one by one
-stx deploy contracts/sip009-nft-trait-v2.clar sip009-nft-trait-v2 -t
-stx deploy contracts/sip010-ft-trait-v2.clar sip010-ft-trait-v2 -t
+stx deploy contracts/sip009-nft-trait-v9.clar sip009-nft-trait-v9 -t
+stx deploy contracts/sip010-ft-trait-v9.clar sip010-ft-trait-v9 -t
 # ... etc
 ```
 
@@ -151,7 +151,7 @@ Once all contracts are deployed:
 2. ✅ Test contract calls:
    ```bash
    # Test avatar mint
-   curl "https://api.testnet.hiro.so/v2/contracts/call-read/ST31DP8F8CF2GXSZBHHHK5J6Y061744E1TP7FRGHT/stacks-hub-avatars-v2/get-last-token-id"
+   curl "https://api.testnet.hiro.so/v2/contracts/call-read/ST31DP8F8CF2GXSZBHHHK5J6Y061744E1TP7FRGHT/stacks-hub-avatars-v9/get-last-token-id"
    ```
 
 3. ✅ Update frontend (already done in `lib/contracts.ts`)
@@ -192,13 +192,13 @@ Once all contracts are deployed:
 Keep track of your deployments:
 
 ```
-✅ sip009-nft-trait-v2: [TX_ID]
-✅ sip010-ft-trait-v2: [TX_ID]
-✅ reputation-v2: [TX_ID]
-✅ liquidity-locker-v2: [TX_ID]
-✅ stacks-hub-avatars-v2: [TX_ID]
-✅ marketplace-v2: [TX_ID]
-✅ launchpad-v2: [TX_ID]
+✅ sip009-nft-trait-v9: [TX_ID]
+✅ sip010-ft-trait-v9: [TX_ID]
+✅ reputation-v9: [TX_ID]
+✅ liquidity-locker-v9: [TX_ID]
+✅ stacks-hub-avatars-v9: [TX_ID]
+✅ marketplace-v9: [TX_ID]
+✅ launchpad-v9: [TX_ID]
 ✅ set-authorized call: [TX_ID]
 ```
 
@@ -215,3 +215,5 @@ Keep track of your deployments:
 ---
 
 **Need help?** Check the Stacks Discord: https://discord.gg/stacks
+
+

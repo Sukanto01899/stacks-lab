@@ -1,8 +1,8 @@
-;; stacks-hub-avatars-v2.clar
+;; stacks-hub-avatars-v9.clar
 ;; SIP-009 NFT Contract for Stacks Lab Profile Avatars
 ;; Allows minting of 100 unique avatars to be used as profile pictures
 
-(impl-trait .sip009-nft-trait-v2.sip009-nft-trait)
+(impl-trait .sip009-nft-trait-v9.sip009-nft-trait)
 
 ;; Constants
 (define-constant contract-owner tx-sender)
@@ -71,3 +71,5 @@
     (nft-transfer? stacks-lab-avatar token-id sender recipient)
   )
 )
+
+
