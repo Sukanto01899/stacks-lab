@@ -48,6 +48,11 @@ export default function LandingPage() {
                     Launch Asset <Rocket className="ml-2 size-5" />
                   </Link>
                 </Button>
+                <Button size="lg" variant="ghost" asChild className="rounded-full px-7 border border-border/60 hover:bg-primary/10">
+                  <Link href="/onboarding">
+                    Guided Setup <ArrowRight className="ml-2 size-5" />
+                  </Link>
+                </Button>
               </div>
               <div className="grid sm:grid-cols-3 gap-3 pt-4">
                 {highlights.map((h) => (

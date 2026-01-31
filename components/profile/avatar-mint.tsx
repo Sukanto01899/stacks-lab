@@ -5,6 +5,7 @@ import { Button } from '@/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/ui/card';
 import { Loader2, Sparkles } from 'lucide-react';
 import { mintAvatar } from '@/lib/contracts';
+import { env } from '@/lib/config';
 import { useWallet } from '@/hooks/useWallet';
 
 export function AvatarMint() {
@@ -20,7 +21,8 @@ export function AvatarMint() {
 
         setIsMinting(true);
         try {
-            await mintAvatar(uri, 'testnet');
+            const networkType = env.NEXT_PUBLIC_STACKS_NETWORK === 'mainnet' ? 'mainnet' : 'testnet';
+            await mintAvatar(uri, networkType);
         } catch (e) {
             console.error(e);
         } finally {
