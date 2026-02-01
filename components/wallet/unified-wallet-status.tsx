@@ -101,64 +101,70 @@ export function UnifiedWalletStatus() {
   };
 
   return (
-    <div className="border-t border-primary/20 bg-background/80 backdrop-blur-lg">
-      <div className="container flex flex-wrap items-center justify-between gap-3 px-4 py-2 text-xs md:text-sm">
-        <div className="flex flex-wrap items-center gap-3">
-          <Badge variant="outline" className="border-primary/40 bg-primary/10 text-primary">Stacks</Badge>
-          <div className="flex items-center gap-2">
-            <span className={cn('h-2 w-2 rounded-full', user?.isAuthenticated ? 'bg-emerald-400' : 'bg-muted-foreground/50')} />
-            <span className="text-muted-foreground">{user?.isAuthenticated ? 'Connected' : 'Disconnected'}</span>
-          </div>
-          <span className="font-mono text-[11px] text-muted-foreground">
-            {user?.address ? truncateAddress(user.address) : '--'}
-          </span>
-          <span className="text-muted-foreground">Network: {stacksNetworkLabel}</span>
-          <span className="text-muted-foreground">
-            Balance: {stxLoading ? '...' : `${formatBalance(stxBalance)} STX`}
-          </span>
-        </div>
-        <div className="flex flex-wrap items-center gap-2">
-          <Button size="sm" variant="ghost" className="h-7 px-2" onClick={loadStxBalance} disabled={!user?.isAuthenticated || stxLoading}>
-            <RefreshCw className="mr-2 h-3 w-3" />
-            Refresh
-          </Button>
-          <Button size="sm" variant="outline" className="h-7 px-2" onClick={user?.isAuthenticated ? disconnectWallet : connectWallet}>
-            {user?.isAuthenticated ? <Power className="mr-2 h-3 w-3" /> : <PlugZap className="mr-2 h-3 w-3" />}
-            {user?.isAuthenticated ? 'Disconnect' : 'Connect'}
-          </Button>
-          <Button size="sm" variant="ghost" className="h-7 px-2" disabled title="Stacks network is set by NEXT_PUBLIC_STACKS_NETWORK">
-            Switch Network
-          </Button>
-        </div>
+    <div className="border-t border-primary/30 bg-[radial-gradient(circle_at_10%_20%,rgba(0,255,255,0.18),transparent_55%),radial-gradient(circle_at_90%_0%,rgba(255,0,204,0.16),transparent_45%),radial-gradient(circle_at_50%_120%,rgba(255,170,0,0.12),transparent_55%)] backdrop-blur-xl">
+      <div className="container relative px-4 py-3">
+        <div className="absolute inset-0 pointer-events-none retro-grid opacity-20" />
+        <div className="absolute -top-8 right-12 h-24 w-24 rounded-full bg-cyan-400/10 blur-3xl" />
+        <div className="absolute -bottom-6 left-12 h-24 w-24 rounded-full bg-fuchsia-500/10 blur-3xl" />
 
-        <div className="hidden md:block h-6 w-px bg-primary/20" />
-
-        <div className="flex flex-wrap items-center gap-3">
-          <Badge variant="outline" className="border-secondary/40 bg-secondary/20 text-secondary-foreground">Bitcoin</Badge>
-          <div className="flex items-center gap-2">
-            <span className={cn('h-2 w-2 rounded-full', isBtcConnected ? 'bg-emerald-400' : 'bg-muted-foreground/50')} />
-            <span className="text-muted-foreground">{isBtcConnected ? 'Connected' : btcStatus === 'connecting' ? 'Connecting' : 'Disconnected'}</span>
+        <div className="relative grid gap-3 lg:grid-cols-[1fr_auto_1fr] items-center text-xs md:text-sm">
+          <div className="flex flex-wrap items-center gap-3 rounded-2xl border border-cyan-400/30 bg-black/40 px-3 py-2 shadow-[0_0_24px_rgba(0,255,255,0.15)]">
+            <Badge variant="outline" className="border-cyan-400/60 bg-cyan-400/10 text-cyan-200">Stacks</Badge>
+            <div className="flex items-center gap-2">
+              <span className={cn('h-2 w-2 rounded-full shadow-[0_0_8px_rgba(0,255,200,0.7)]', user?.isAuthenticated ? 'bg-emerald-400' : 'bg-muted-foreground/50')} />
+              <span className="text-cyan-100/80">{user?.isAuthenticated ? 'Connected' : 'Disconnected'}</span>
+            </div>
+            <span className="font-mono text-[11px] text-cyan-100/60">
+              {user?.address ? truncateAddress(user.address) : '--'}
+            </span>
+            <span className="text-cyan-100/60">Network: {stacksNetworkLabel}</span>
+            <span className="text-cyan-100/80">
+              Balance: {stxLoading ? '...' : `${formatBalance(stxBalance)} STX`}
+            </span>
           </div>
-          <span className="font-mono text-[11px] text-muted-foreground">
-            {btcAddress ? truncateAddress(btcAddress) : '--'}
-          </span>
-          <span className="text-muted-foreground">Network: {bitcoinNetworkLabel}</span>
-          <span className="text-muted-foreground">
-            Balance: {btcLoading ? '...' : `${formatBalance(btcBalance, 6)} ${btcSymbol}`}
-          </span>
-        </div>
-        <div className="flex flex-wrap items-center gap-2">
-          <Button size="sm" variant="ghost" className="h-7 px-2" onClick={loadBtcBalance} disabled={!isBtcConnected || btcLoading}>
-            <RefreshCw className="mr-2 h-3 w-3" />
-            Refresh
-          </Button>
-          <Button size="sm" variant="outline" className="h-7 px-2" onClick={isBtcConnected ? () => disconnect({ namespace: 'bip122' }) : () => open()}>
-            {isBtcConnected ? <Power className="mr-2 h-3 w-3" /> : <Bitcoin className="mr-2 h-3 w-3" />}
-            {isBtcConnected ? 'Disconnect' : 'Connect'}
-          </Button>
-          <Button size="sm" variant="ghost" className="h-7 px-2" onClick={handleBitcoinSwitch} disabled={!isBtcConnected}>
-            Switch Network
-          </Button>
+
+          <div className="flex flex-wrap items-center justify-center gap-2 rounded-2xl border border-primary/20 bg-black/30 px-3 py-2 shadow-[0_0_18px_rgba(255,0,204,0.12)]">
+            <Button size="sm" variant="ghost" className="h-7 px-2 text-cyan-100 hover:text-cyan-50 hover:bg-cyan-400/10" onClick={loadStxBalance} disabled={!user?.isAuthenticated || stxLoading}>
+              <RefreshCw className="mr-2 h-3 w-3" />
+              Refresh
+            </Button>
+            <Button size="sm" variant="outline" className="h-7 px-2 border-cyan-400/40 text-cyan-100 hover:bg-cyan-400/10" onClick={user?.isAuthenticated ? disconnectWallet : connectWallet}>
+              {user?.isAuthenticated ? <Power className="mr-2 h-3 w-3" /> : <PlugZap className="mr-2 h-3 w-3" />}
+              {user?.isAuthenticated ? 'Disconnect' : 'Connect'}
+            </Button>
+            <Button size="sm" variant="ghost" className="h-7 px-2 text-fuchsia-200/80 hover:text-fuchsia-100 hover:bg-fuchsia-500/10" disabled title="Stacks network is set by NEXT_PUBLIC_STACKS_NETWORK">
+              Switch Network
+            </Button>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-3 rounded-2xl border border-fuchsia-500/30 bg-black/40 px-3 py-2 shadow-[0_0_24px_rgba(255,0,204,0.15)]">
+            <Badge variant="outline" className="border-fuchsia-500/60 bg-fuchsia-500/10 text-fuchsia-200">Bitcoin</Badge>
+            <div className="flex items-center gap-2">
+              <span className={cn('h-2 w-2 rounded-full shadow-[0_0_8px_rgba(255,170,0,0.7)]', isBtcConnected ? 'bg-amber-300' : 'bg-muted-foreground/50')} />
+              <span className="text-fuchsia-100/80">{isBtcConnected ? 'Connected' : btcStatus === 'connecting' ? 'Connecting' : 'Disconnected'}</span>
+            </div>
+            <span className="font-mono text-[11px] text-fuchsia-100/60">
+              {btcAddress ? truncateAddress(btcAddress) : '--'}
+            </span>
+            <span className="text-fuchsia-100/60">Network: {bitcoinNetworkLabel}</span>
+            <span className="text-fuchsia-100/80">
+              Balance: {btcLoading ? '...' : `${formatBalance(btcBalance, 6)} ${btcSymbol}`}
+            </span>
+          </div>
+
+          <div className="flex flex-wrap items-center justify-center gap-2 rounded-2xl border border-primary/20 bg-black/30 px-3 py-2 shadow-[0_0_18px_rgba(255,170,0,0.12)] lg:col-start-3">
+            <Button size="sm" variant="ghost" className="h-7 px-2 text-fuchsia-100 hover:text-fuchsia-50 hover:bg-fuchsia-500/10" onClick={loadBtcBalance} disabled={!isBtcConnected || btcLoading}>
+              <RefreshCw className="mr-2 h-3 w-3" />
+              Refresh
+            </Button>
+            <Button size="sm" variant="outline" className="h-7 px-2 border-fuchsia-500/40 text-fuchsia-100 hover:bg-fuchsia-500/10" onClick={isBtcConnected ? () => disconnect({ namespace: 'bip122' }) : () => open()}>
+              {isBtcConnected ? <Power className="mr-2 h-3 w-3" /> : <Bitcoin className="mr-2 h-3 w-3" />}
+              {isBtcConnected ? 'Disconnect' : 'Connect'}
+            </Button>
+            <Button size="sm" variant="ghost" className="h-7 px-2 text-amber-200/80 hover:text-amber-100 hover:bg-amber-500/10" onClick={handleBitcoinSwitch} disabled={!isBtcConnected}>
+              Switch Network
+            </Button>
+          </div>
         </div>
       </div>
     </div>
