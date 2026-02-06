@@ -1,0 +1,60 @@
+---
+id: 0
+name: Mainnet deployment
+network: mainnet
+stacks-node: "https://api.mainnet.hiro.so"
+bitcoin-node: "http://blockstack:blockstacksystem@bitcoin.blockstack.com:8332"
+plan:
+  batches:
+    - id: 0
+      transactions:
+        - contract-publish:
+            contract-name: sip010-ft-trait-v11
+            expected-sender: SP1K2XGT5RNGT42N49BH936VDF8NXWNZJY15BPV4F
+            cost: 8240
+            path: "contracts\\sip010-ft-trait-v11.clar"
+            anchor-block-only: true
+            clarity-version: 2
+        - contract-publish:
+            contract-name: launchpad-v11
+            expected-sender: SP1K2XGT5RNGT42N49BH936VDF8NXWNZJY15BPV4F
+            cost: 129600
+            path: "contracts\\launchpad-v11.clar"
+            anchor-block-only: true
+            clarity-version: 2
+        - contract-publish:
+            contract-name: liquidity-locker-v11
+            expected-sender: SP1K2XGT5RNGT42N49BH936VDF8NXWNZJY15BPV4F
+            cost: 28010
+            path: "contracts\\liquidity-locker-v11.clar"
+            anchor-block-only: true
+            clarity-version: 2
+        - contract-publish:
+            contract-name: sip009-nft-trait-v11
+            expected-sender: SP1K2XGT5RNGT42N49BH936VDF8NXWNZJY15BPV4F
+            cost: 5010
+            path: "contracts\\sip009-nft-trait-v11.clar"
+            anchor-block-only: true
+            clarity-version: 2
+        - contract-publish:
+            contract-name: marketplace-v11
+            expected-sender: SP1K2XGT5RNGT42N49BH936VDF8NXWNZJY15BPV4F
+            cost: 26420
+            path: "contracts\\marketplace-v11.clar"
+            anchor-block-only: true
+            clarity-version: 2
+        - contract-publish:
+            contract-name: reputation-v11
+            expected-sender: SP1K2XGT5RNGT42N49BH936VDF8NXWNZJY15BPV4F
+            cost: 19480
+            path: "contracts\\reputation-v11.clar"
+            anchor-block-only: true
+            clarity-version: 2
+        - contract-publish:
+            contract-name: stacks-hub-avatars-v11
+            expected-sender: SP1K2XGT5RNGT42N49BH936VDF8NXWNZJY15BPV4F
+            cost: 18160
+            path: "contracts\\stacks-hub-avatars-v11.clar"
+            anchor-block-only: true
+            clarity-version: 2
+      epoch: "2.1"
