@@ -9,38 +9,38 @@ cache_dir = "./.cache"
 # contract_id = "ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM.sbtc-token"
 # Mainnet: SM3VDXK3WZZSA84XXFKAFAF15NNZX32CTSG82JFQ4.sbtc-token
 
-[contracts.launchpad-v12]
-path = "contracts/launchpad-v12.clar"
+[contracts.launchpad-v13]
+path = "contracts/launchpad-v13.clar"
 clarity_version = 2
 epoch = '2.1'
 
-[contracts.marketplace-v12]
-path = "contracts/marketplace-v12.clar"
+[contracts.marketplace-v13]
+path = "contracts/marketplace-v13.clar"
 clarity_version = 2
 epoch = '2.1'
 
-[contracts.reputation-v12]
-path = "contracts/reputation-v12.clar"
+[contracts.reputation-v13]
+path = "contracts/reputation-v13.clar"
 clarity_version = 2
 epoch = '2.1'
 
-[contracts.liquidity-locker-v12]
-path = "contracts/liquidity-locker-v12.clar"
+[contracts.liquidity-locker-v13]
+path = "contracts/liquidity-locker-v13.clar"
 clarity_version = 2
 epoch = '2.1'
 
-[contracts.stacks-hub-avatars-v12]
-path = "contracts/stacks-hub-avatars-v12.clar"
+[contracts.stacks-hub-avatars-v13]
+path = "contracts/stacks-hub-avatars-v13.clar"
 clarity_version = 2
 epoch = '2.1'
 
-[contracts.sip009-nft-trait-v12]
-path = "contracts/sip009-nft-trait-v12.clar"
+[contracts.sip009-nft-trait-v13]
+path = "contracts/sip009-nft-trait-v13.clar"
 clarity_version = 2
 epoch = '2.1'
 
-[contracts.sip010-ft-trait-v12]
-path = "contracts/sip010-ft-trait-v12.clar"
+[contracts.sip010-ft-trait-v13]
+path = "contracts/sip010-ft-trait-v13.clar"
 clarity_version = 2
 epoch = '2.1'
 
