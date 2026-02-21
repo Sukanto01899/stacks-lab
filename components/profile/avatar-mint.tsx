@@ -3,19 +3,25 @@
 import { useState } from 'react';
 import { Button } from '@/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/ui/card';
-import { Loader2, Sparkles } from 'lucide-react';
+import { Loader2, Sparkles, Eye } from 'lucide-react';
 import { mintAvatar } from '@/lib/contracts';
 import { env } from '@/lib/config';
 import { useWallet } from '@/hooks/useWallet';
+import { Avatar, AvatarImage, AvatarFallback } from '@/ui/avatar';
 
 export function AvatarMint() {
     const { user } = useWallet();
     const [isMinting, setIsMinting] = useState(false);
+    const [showPreview, setShowPreview] = useState(false);
+
+    // Generate avatar preview URL
+    const previewUrl = user?.address 
+        ? `https://api.dicebear.com/9.x/adventurer/svg?seed=${user.address}`
+        : '';
 
     const handleMint = async () => {
         if (!user?.isAuthenticated || !user.address) return;
 
-        // Use user address as seed for consistency
         const seed = user.address;
         const uri = `https://api.dicebear.com/9.x/adventurer/svg?seed=${seed}`;
 
@@ -43,6 +49,33 @@ export function AvatarMint() {
                     <span className="font-semibold text-primary mt-1 inline-block">Price: 100 STX</span>
                 </CardDescription>
             </CardHeader>
+            
+            {/* Avatar Preview Section */}
+            {user?.isAuthenticated && (
+                <div className="px-6 py-2">
+                    <div className="flex items-center gap-3 p-3 rounded-lg bg-muted/50 border border-border">
+                        <Avatar className="h-12 w-12 ring-2 ring-primary/20">
+                            <AvatarImage src={previewUrl} />
+                            <AvatarFallback>?</AvatarFallback>
+                        </Avatar>
+                        <div className="flex-1">
+                            <p className="text-xs font-medium">Your Avatar Preview</p>
+                            <p className="text-[10px] text-muted-foreground truncate max-w-[150px]">
+                                {user.address?.slice(0, 10)}...{user.address?.slice(-4)}
+                            </p>
+                        </div>
+                        <Button
+                            variant="ghost"
+                            size="icon"
+                            className="h-8 w-8"
+                            onClick={() => window.open(previewUrl, '_blank')}
+                        >
+                            <Eye className="h-4 w-4" />
+                        </Button>
+                    </div>
+                </div>
+            )}
+
             <CardContent>
                 <Button
                     className="w-full font-bold shadow-lg shadow-primary/20 transition-all hover:scale-[1.02]"
