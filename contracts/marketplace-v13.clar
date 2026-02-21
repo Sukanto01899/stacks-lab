@@ -10,9 +10,11 @@
 (define-constant err-listing-not-found (err u102))
 (define-constant err-wrong-contract (err u103))
 (define-constant err-price-zero (err u104))
+(define-constant err-offer-too-low (err u105))
+(define-constant err-offer-not-found (err u106))
+(define-constant err-offer-expired (err u107))
 
 ;; Listing Map
-;; Token ID -> { price: uint, seller: principal }
 (define-map listings
   uint
   {
@@ -21,9 +23,22 @@
   }
 )
 
+;; Offers Map
+(define-map offers
+  { token-id: uint, bidder: principal }
+  {
+    amount: uint,
+    expires-at: uint,  ;; Block height when offer expires
+  }
+)
+
 ;; Read-only functions
 (define-read-only (get-listing (token-id uint))
   (map-get? listings token-id)
+)
+
+(define-read-only (get-offer (token-id uint) (bidder principal))
+  (map-get? offers { token-id: token-id, bidder: bidder })
 )
 
 ;; List NFT for sale
@@ -55,7 +70,108 @@
   )
 )
 
-;; Buy NFT
+;; Make an offer on a listing
+(define-public (make-offer
+    (token-id uint)
+    (amount uint)
+    (expiry-blocks uint)
+  )
+  (let (
+      (listing (unwrap! (map-get? listings token-id) err-listing-not-found))
+      (listing-price (get price listing))
+      (expiry-height (+ burn-block-height expiry-blocks))
+    )
+    (begin
+      ;; Check if offer meets minimum price (optional - can offer lower)
+      ;; Comment this out if you want to allow any offers
+      (asserts! (>= amount listing-price) err-offer-too-low)
+
+      ;; Store offer
+      (map-set offers 
+        { token-id: token-id, bidder: tx-sender }
+        {
+          amount: amount,
+          expires-at: expiry-height,
+        }
+      )
+
+      (print {
+        event: "offer-made",
+        token-id: token-id,
+        bidder: tx-sender,
+        amount: amount,
+        expires-at: expiry-height
+      })
+      
+      (ok true)
+    )
+  )
+)
+
+;; Accept an offer
+(define-public (accept-offer
+    (nft-contract <sip009-nft-trait>)
+    (token-id uint)
+    (bidder principal)
+  )
+  (let (
+      (listing (unwrap! (map-get? listings token-id) err-listing-not-found))
+      (seller (get seller listing))
+      (offer (unwrap! (map-get? offers { token-id: token-id, bidder: bidder }) err-offer-not-found))
+      (offer-amount (get amount offer))
+      (expires-at (get expires-at offer))
+    )
+    (begin
+      ;; Only seller can accept
+      (asserts! (is-eq tx-sender seller) err-not-token-owner)
+      
+      ;; Check if offer expired
+      (asserts! (< burn-block-height expires-at) err-offer-expired)
+
+      ;; Pay seller
+      (try! (stx-transfer? offer-amount bidder seller))
+
+      ;; Transfer NFT to buyer
+      (try! (as-contract (contract-call? nft-contract transfer token-id tx-sender bidder)))
+
+      ;; Remove listing and offer
+      (map-delete listings token-id)
+      (map-delete offers { token-id: token-id, bidder: bidder })
+
+      (print {
+        event: "offer-accepted",
+        token-id: token-id,
+        seller: seller,
+        buyer: bidder,
+        amount: offer-amount
+      })
+
+      (ok true)
+    )
+  )
+)
+
+;; Cancel an offer
+(define-public (cancel-offer (token-id uint))
+  (let (
+      (offer (unwrap! (map-get? offers { token-id: token-id, bidder: tx-sender }) err-offer-not-found))
+    )
+    (begin
+      ;; Remove offer
+      (map-delete offers { token-id: token-id, bidder: tx-sender })
+
+      (print {
+        event: "offer-cancelled",
+        token-id: token-id,
+        bidder: tx-sender
+      })
+
+      (ok true)
+    )
+  )
+)
+
+;; Buy NFT (instant buy at listed price)
 (define-public (buy-asset
     (nft-contract <sip009-nft-trait>)
     (token-id uint)
@@ -72,8 +188,12 @@
       ;; Transfer NFT to buyer (contract sends to tx-sender)
       (try! (as-contract (contract-call? nft-contract transfer token-id tx-sender tx-sender)))
 
-      ;; Remove listing
+      ;; Remove listing and any offers
       (map-delete listings token-id)
+      
+      ;; Clean up any existing offers (optional)
+      ;; Would need to iterate through offers - for simplicity, leaving as is
+
       (ok true)
     )
   )
