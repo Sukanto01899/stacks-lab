@@ -6,12 +6,10 @@ import { usePathname } from "next/navigation";
 import { Avatar, AvatarFallback, AvatarImage } from "@/ui/avatar";
 import { Input } from "@/ui/input";
 import { ScrollArea } from "@/ui/scroll-area";
-import { Plus, Search } from "lucide-react";
+import { Search } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useWallet } from "@/hooks/useWallet";
 import { NewChatDialog } from "./new-chat-dialog";
-
-// Mock data removed
 
 export function ChatSidebar() {
   const pathname = usePathname();
@@ -28,7 +26,7 @@ export function ChatSidebar() {
         const res = await fetch(
           `${
             process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:3001"
-          }/api/chat/conversations?user=${user.address}`
+          }/api/chat/conversations?user=${user.address}`,
         );
         if (res.ok) {
           const data = await res.json();
@@ -64,7 +62,7 @@ export function ChatSidebar() {
               "flex-1 text-xs font-medium py-1.5 rounded-md transition-all",
               view === "active"
                 ? "bg-background shadow-sm text-foreground"
-                : "text-muted-foreground hover:text-foreground"
+                : "text-muted-foreground hover:text-foreground",
             )}
           >
             Active
@@ -75,7 +73,7 @@ export function ChatSidebar() {
               "flex-1 text-xs font-medium py-1.5 rounded-md transition-all",
               view === "requests"
                 ? "bg-background shadow-sm text-foreground"
-                : "text-muted-foreground hover:text-foreground"
+                : "text-muted-foreground hover:text-foreground",
             )}
           >
             Requests
@@ -119,7 +117,7 @@ export function ChatSidebar() {
                   "flex items-start gap-3 p-3 rounded-xl transition-all duration-200",
                   isActive
                     ? "bg-primary/10 hover:bg-primary/15"
-                    : "hover:bg-muted/50"
+                    : "hover:bg-muted/50",
                 )}
               >
                 <Avatar className="border-2 border-background shadow-sm">
@@ -135,7 +133,7 @@ export function ChatSidebar() {
                     <span
                       className={cn(
                         "font-medium truncate text-sm",
-                        isActive ? "text-foreground" : "text-foreground/90"
+                        isActive ? "text-foreground" : "text-foreground/90",
                       )}
                     >
                       {displayName}
@@ -152,14 +150,14 @@ export function ChatSidebar() {
                   <p
                     className={cn(
                       "text-xs truncate",
-                      isActive ? "text-foreground/80" : "text-muted-foreground"
+                      isActive ? "text-foreground/80" : "text-muted-foreground",
                     )}
                   >
                     {chat.lastMessage
                       ? chat.lastMessage.content
                       : view === "requests"
-                      ? "New chat request"
-                      : "No messages yet"}
+                        ? "New chat request"
+                        : "No messages yet"}
                   </p>
                 </div>
               </Link>
