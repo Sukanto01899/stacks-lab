@@ -2,7 +2,7 @@
 ;; Bonding Curve Launchpad for Stacks Lab
 ;; Features: Bitcoin Finality, Vesting, Reputation, Liquidity Locking
 
-(use-trait sip010-ft-trait .sip010-ft-trait-v13.sip010-ft-trait)
+(use-trait sip010-ft-trait .sip010-ft-trait-v14.sip010-ft-trait)
 
 ;; Traits for interaction
 ;; Traits for interaction
