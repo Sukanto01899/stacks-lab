@@ -3,11 +3,9 @@
 import { useWallet } from "@/hooks/useWallet";
 import { Button } from "@/ui/button";
 import { Loader2, Lock } from "lucide-react";
-import { useRouter } from "next/navigation";
 
 export function AuthGuard({ children }: { children: React.ReactNode }) {
   const { user, isMounted, connectWallet } = useWallet();
-  const router = useRouter();
 
   if (!isMounted) {
     return (

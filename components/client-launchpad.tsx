@@ -135,7 +135,7 @@ export default function ClientLaunchpad() {
 
   const { watch } = form;
   watch((value) => {
-    setLaunchData(value as any);
+    setLaunchData(value as z.infer<typeof formSchema>);
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
