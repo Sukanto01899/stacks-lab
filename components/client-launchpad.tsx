@@ -203,9 +203,6 @@ export default function ClientLaunchpad() {
         values.targetStx,
         endBurnHeight,
       );
-      // We assume success if the promise resolves (actually openContractCall returns void mostly but triggers popup)
-      // But for UI flow we update step in onFinish callback inside `launchToken`.
-      // Wait, my `launchToken` wrapper returns a Promise that resolves on Finish.
 
       saveToken(deployedToken);
       setDeployStep("DONE");
