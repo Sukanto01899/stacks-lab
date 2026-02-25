@@ -2,7 +2,7 @@
 ;; Trustless Liquidity Locker for Stacks Lab
 ;; Locks SIP-010 tokens until a specific Bitcoin block height.
 
-(use-trait sip010-ft-trait .sip010-ft-trait-v14.sip010-ft-trait)
+(use-trait sip010-ft-trait .sip010-ft-trait-v15.sip010-ft-trait)
 
 (define-constant ERR_NOT_AUTHORIZED (err u1000))
 (define-constant ERR_LOCK_STILL_ACTIVE (err u1001))
